@@ -7,8 +7,8 @@ public class TestProgAB1
    public static void main(String[] args)
    {
       Scanner in = new Scanner(System.in);
-      
-      String k;
+      Boolean escape = true;
+      String input;
       //Integer v;
 
       TreeAB T = new TreeAB(3,7);    // Make a 3,7-tree
@@ -45,21 +45,28 @@ public class TestProgAB1
 
       T.printTree();
 
-      while ( true )
+      while ( escape )
       {
          System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-         System.out.print("Enter a key: ");
-         k = in.next();
-         System.out.println("remove(" + k + "):");
-         T.remove(k);
+         System.out.println("Enter a key to remove: ");
+         System.out.print("or enter \"esc\" to end program ");
+         input = in.next();
+         if (input == "esc"){
+        	 escape = false;
+        	 break;
+         }
+         System.out.println("remove(" + input + "):");
+         T.remove(input);
          System.out.println();
-         System.out.println("== After remove(" + k + "):");
+         System.out.println("== After remove(" + input + "):");
          T.printTree();
          System.out.println();
          System.out.println();
          System.out.println();
          T.checkTree();
-      }
+      }//closes while loop
+      
+      in.close();
    }
 
 }
